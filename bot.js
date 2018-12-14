@@ -44,5 +44,4 @@ client.on('message', msg => {
 client.on('ready', () => {
     client.channels.get("523262583395057680").join(); 
     });
-
 client.login(process.env.BOT_TOKEN);
