@@ -14,4 +14,6 @@ client.on("message", message => {
  message.channel.send(`\`${message.guild.members.filter(m => m.presence.status !== 'online').size}\` : عدد الاعضاء المستلمين`); 
  message.delete(); 
 };     
+});
+
 client.login(process.env.BOT_TOKEN);
