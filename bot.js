@@ -1,5 +1,6 @@
 const Discord = require('discord.js');
-var prefix = "$";
+const client = new Discord.Client();
+const prefix = '$';
 
 client.on("message", message => {
 
@@ -14,4 +15,5 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
+
 client.login(process.env.BOT_TOKEN);
