@@ -15,7 +15,6 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
-const client = new Discord.Client();
 
   if(message.content.startsWith("$setvoice")) {
   if(!message.guild.member(message.author).hasPermissions('MANAGE_CHANNELS')) return message.reply('❌ **ليس لديك الصلاحيات الكافية**');
