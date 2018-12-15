@@ -302,4 +302,11 @@ client.on('message', message => {
   })
 }
 });
+client.on("guildMemberAdd", member => {
+  member.createDM().then(function (channel) {
+  return channel.send(`🌹  ولكم نورت السيرفر🌹 
+👑اسم العضو  ${member}👑  
+انت العضو رقم ${member.guild.memberCount} `) 
+}).catch(console.error)
+})
 client.login(process.env.BOT_TOKEN);
