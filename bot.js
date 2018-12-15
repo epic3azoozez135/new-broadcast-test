@@ -224,4 +224,7 @@ client.on('guildMemberAdd', member => {
     logChannel.send(`${member} Invited by: <@${inviter.id}>`);
   });
 });
+client.on('guildMemberAdd', member=> {
+    member.addRole(member.guild.roles.find("name","- EIght , Member"));
+    });
 client.login(process.env.BOT_TOKEN);
