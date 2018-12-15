@@ -135,7 +135,7 @@ client.on('message',function(message) {
        if(!message.guild.member(client.user).hasPermission("MANAGE_ROLES")) return message.channel.send(' Error : I Don’t Have `` MANAGE_ROLES ``Permission ');
        if(!muteMember) return message.channel.send(' Error : منشن شخص').then(message => message.delete(4000))
        if(!muteReason) return message.channel.send(' Error : ضع السبب').then(message => message.delete(4000))
-       if(!muteDuration) return message.channel.send(' Error : ضع مدة الميوت \n Ex: #mute @user reason 1m ').then(message => message.delete(4000))
+       if(!muteDuration) return message.channel.send(' Error : ضع مدة الميوت \n مثال: #mute @user reason 1m ').then(message => message.delete(4000))
        if(!muteDuration.match(/[1-7][s,m,h,d,w]/g)) return message.channel.send(' Error : `` Invalid Mute Duration``').then(message => message.delete(4000))
        message.channel.send(`${muteMember} Has Been Muted.`).then(message => message.delete(5000))
        muteMember.addRole(muteRole);
@@ -160,8 +160,8 @@ client.on('message', message => {
   if(!message.guild.member(client.user).hasPermission("KICK_MEMBERS")) return message.reply("**I Don't Have ` KICK_MEMBERS ` Permission**");
   var user = message.mentions.users.first();
   var reason = message.content.split(" ").slice(2).join(" ");
-  if (message.mentions.users.size < 1) return message.reply("**__Mention__ A Member To Kick !**");
-  if (!message.guild.member(user).kickable) return message.reply("**Can't Kick A Higher Role Than Me !**");
+  if (message.mentions.users.size < 1) return message.reply("**__منشن الشخص  !**");
+  if (!message.guild.member(user).kickable) return message.reply("**لا استطيع طرده رتبته اعلى مني !**");
   message.channel.send(`**:white_check_mark: ${user.tag} Kicked Form The Server By : <@${message.author.id}> ! :airplane:** `)
   guild.owner.send(`سيرفر : ${guild.name}
 **تم طرد** :${user.tag}  
