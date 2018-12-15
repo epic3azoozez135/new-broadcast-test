@@ -147,9 +147,4 @@ client.on('message',function(message) {
        });
    } 
 });
-client.on('message', msg => {
-  if (msg.content === '$ping') {
-   msg.reply('? سرعة استجابة البوت ');
-  }
-});
 client.login(process.env.BOT_TOKEN);
