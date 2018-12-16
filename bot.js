@@ -1051,6 +1051,8 @@ client.on('message', message => {
 .addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
 .addField('     **$ban**  ' ,' **حتى تبند ** ')
 .addField('     **$unban **  ' ,' **لفك الباند عن شخص** ')
+.addField('     **bans **  ' ,' **لمعرفة كم شخص مبند في السيرفر** ')
+
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
     }
