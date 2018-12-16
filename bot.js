@@ -313,6 +313,7 @@ client.on('message', message => {
             if (message.content.startsWith("$rules")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
+.addField('   **القوانين** ')
 .addField('     اولا ' ,' ممنوع السب ')
 .addField('     ثانيا ' ,' لا تسوي سبام  ')
 .addField('     ثالثا ' ,' لا تزعج الاخرين ')
@@ -1052,6 +1053,8 @@ client.on('message', message => {
 .addField('     **$ban**  ' ,' **حتى تبند ** ')
 .addField('     **$unban **  ' ,' **لفك الباند عن شخص** ')
 .addField('     **$bans **  ' ,' **لمعرفة كم شخص مبند في السيرفر** ')
+.addField('     **$mc **  ' ,' **لتقفيل الروم** ')
+.addField('     **$umc **  ' ,' **لفتح الروم** ')
 
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
@@ -1218,7 +1221,7 @@ client.on('message', message => {
 
 client.on('message', message => {
  
-    if (message.content === ".mc") {
+    if (message.content === "$mc") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
  
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
@@ -1229,7 +1232,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
                message.reply("تم تقفيل الشات ✅ ")
            });
              }
-if (message.content === ".umc") {
+if (message.content === "$umc") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
  
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
