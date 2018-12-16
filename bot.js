@@ -313,7 +313,7 @@ client.on('message', message => {
             if (message.content.startsWith("$rules")) {
      let embed = new Discord.RichEmbed()
 .setThumbnail(message.author.avatarURL)
-.addField('   **القوانين** ')
+.addField(' القوانين')
 .addField('     اولا ' ,' ممنوع السب ')
 .addField('     ثانيا ' ,' لا تسوي سبام  ')
 .addField('     ثالثا ' ,' لا تزعج الاخرين ')
