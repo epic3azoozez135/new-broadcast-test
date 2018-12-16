@@ -1206,5 +1206,12 @@ client.on('message' , najzx => {
         najzx.channel.sendEmbed(embed)
     }
   });
+client.on('message', message => {
+    if (message.content.startsWith("$bans")) {
+        message.guild.fetchBans()
+        .then(bans => message.channel.send(`${bans.size} عدد اشخاص المبندين من السيرفر `))
+  .catch(console.error);
+}
+});
 
 client.login(process.env.BOT_TOKEN);
