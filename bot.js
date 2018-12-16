@@ -1083,4 +1083,109 @@ client.on('message',async message => {
   }
 });
 
+  /// code deafen
+  
+  
+client.on('message', message => {
+        var prefix = "$";
+        if(message.content.startsWith(prefix + 'deafen')) {
+      if (message.mentions.users.size === 0 && message.mentions.roles.size === 0) {
+        return message.reply('**يجب عليك المنشن اولاّ**❌').catch(console.error);
+      }
+      if (!message.guild.member(client.user).hasPermission('DEAFEN_MEMBERS')) {
+        return message.reply('للأسف البوت لا يمتلك صلاحيات لتنفيذ هذه الأمر**❌').catch(console.error);
+      }
+     
+      const deafenMember = (member) => {
+        if (!member || !member.voiceChannel) return;
+        if (member.serverDeaf) return message.channel.send(`${member} **لديه ديفن بالفعل**:x:`);
+        member.setDeaf(true).catch(console.error);
+        if(!message.member.hasPermission("DEAFEN_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ديفن **❌ ").then(m => m.delete(5000));
+      };
+     
+      message.mentions.users.forEach(user => deafenMember(message.guild.member(user)));
+      message.mentions.roles.forEach(role => role.members.forEach(member => deafenMember(member)));
+        }
+        
+    });
+	
+	
+	
+	
+	///code undeafen
+	
+	
+	client.on('message', async message =>{
+      var prefix = "$";
+      if(message.content.startsWith(prefix + 'undeafen')) {
+     
+    if (message.mentions.users.size === 0 && message.mentions.roles.size === 0) {
+      return message.reply('**يجب عليك المنشن اولاّ**❌').catch(console.error);
+    }
+    if (!message.guild.member(client.user).hasPermission('DEAFEN_MEMBERS')) {
+      return message.reply('**للأسف البوت لا يمتلك صلاحيات لتنفيذ هذه الأمر**❌ ').catch(console.error);
+      if(!message.member.hasPermission("DEAFEN_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ديفن **❌ ").then(m => m.delete(5000));
+    }
+     
+    const undeafenMember = (member) => {
+      if (!member || !member.voiceChannel) return;
+      if (!member.serverDeaf) return message.channel.send(`${member} `);
+      member.setDeaf(false).catch(console.error);
+    };
+     
+    message.mentions.users.forEach(user => undeafenMember(message.guild.member(user)));
+    message.mentions.roles.forEach(role => role.members.forEach(member => undeafenMember(member)));
+    }
+    });
+	
+	
+	
+	/// code unmutevoice
+	
+	
+	
+	client.on('message', message => {
+      var prefix = "$";
+      if(message.content.startsWith(prefix + 'unmutevoice')) {
+        if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ميوت صوتي**❌ ").then(m => m.delete(5000));
+        if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I Don't Have `MUTE_MEMBERS` Permission**").then(msg => msg.delete(6000))
+         
+      if(message.mentions.users.size === 0) {
+        return message.reply("Please mention a user to mute.");
+      }
+      let muteMember = message.guild.member(message.mentions.users.first());
+      if(!muteMember) {
+        return message.reply("Try again.");
+      }
+      muteMember.setMute(false);
+      if(muteMember) {
+        message.channel.sendMessage("User muted successfully.");
+      }
+    }
+  });
+	
+	
+	/// code mute
+	
+	
+	client.on('message', message => {
+        var prefix = "$";
+        if(message.content.startsWith(prefix + 'mutevoice')) {
+          if(!message.member.hasPermission("MUTE_MEMBERS")) return message.channel.sendMessage("**ليس لديك صلاحية لاعطاء ميوت صوتي**❌ ").then(m => m.delete(5000));
+          if(!message.guild.member(client.user).hasPermission("MUTE_MEMBERS")) return message.reply("**I Don't Have `MUTE_MEMBERS` Permission**").then(msg => msg.delete(6000))
+           
+        if(message.mentions.users.size === 0) {
+          return message.reply("Please mention a user to mute.");
+        }
+        let muteMember = message.guild.member(message.mentions.users.first());
+        if(!muteMember) {
+          return message.reply("Try again.");
+        }
+        muteMember.setMute(true);
+        if(muteMember) {
+          message.channel.sendMessage("User muted successfully.");
+        }
+      }
+    });
+
 client.login(process.env.BOT_TOKEN);
