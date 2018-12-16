@@ -34,7 +34,7 @@ client.on("message", message => {
     var prefix = "$"; // غير هنا حط البرفكس
  
             var args = message.content.substring(prefix.length).split(" ");
-            if (message.content.startsWith(prefix + "مسح")) {
+            if (message.content.startsWith(prefix + "clear")) {
    if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('⚠ | **ليس لديك صلاحيات**');
         var msg;
         msg = parseInt();
@@ -1038,5 +1038,22 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
+client.on('message', message => {
+     if (message.content === "$help") {
+     let embed = new Discord.RichEmbed()
+.setThumbnail(message.author.avatarURL)
+.addField('     **$clear** ' ,' **مسح الشات** ')
+.addField('     **$obc**  ' ,' **نشر رساله للأعضاء** ')
+.addField('     **$server**  ' ,' **معلومات السرفر** ')
+.addField('     **$id**  ' ,' **حتى تعرف الاى دى حقك** ')
+.addField('     **$avatar**  ' ,' **لعرض صورة البروفايل خاصتك** ')
+.addField('     **$mute**  ' ,' **لإعطاء شخص ميوت** ')
+.addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
+.addField('     **$ban**  ' ,' **حتى تبند ** ')
+.addField('     **$unban **  ' ,' **لفك الباند عن شخص** ')
+.setColor('RANDOM')
+  message.channel.sendEmbed(embed);
+    }
+});
 
 client.login(process.env.BOT_TOKEN);
