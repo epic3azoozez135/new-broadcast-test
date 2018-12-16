@@ -1215,9 +1215,10 @@ client.on('message', message => {
   .catch(console.error);
 }
 });
+
 client.on('message', message => {
  
-    if (message.content === "$mc") {
+    if (message.content === ".mc") {
                         if(!message.channel.guild) return message.reply(' This command only for servers');
  
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' ليس لديك صلاحيات');
@@ -1228,8 +1229,7 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' لي
                message.reply("تم تقفيل الشات ✅ ")
            });
              }
-//™¦༺♚ƙἶղց|MaS♚༺¦™#7105
-if (message.content === "$umc
+if (message.content === ".umc") {
     if(!message.channel.guild) return message.reply(' This command only for servers');
  
 if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('ليس لديك صلاحيات');
@@ -1244,4 +1244,5 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
  
  
 });
+
 client.login(process.env.BOT_TOKEN);
