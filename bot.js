@@ -135,7 +135,7 @@ client.on('message', message => {
  
 });
 
-
+//mute
 client.on('message',function(message) {
  if(!message.channel.guild) return;    let messageArray = message.content.split(' ');
     let muteRole =  message.guild.roles.find('name', 'Muted');
@@ -162,6 +162,9 @@ client.on('message',function(message) {
        });
    } 
 });
+
+//kick
+
 client.on('message', message => {
   if (message.author.omar) return;
   if (!message.content.startsWith(prefix)) return;
@@ -185,6 +188,9 @@ message.guild.member(user).kick();
   })
 }
 });
+
+//move
+
 client.on('message', message => {
 if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
@@ -228,9 +234,15 @@ client.on('ready', () => {
     });
   });
 });
+
+//autorole
+
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","- EIght , Member"));
     });
+
+//حالات البوت
+
 const devs = ["462038057529507841"];
 const adminprefix = ["$"];
 client.on('message', message => {
@@ -280,6 +292,9 @@ client.on('message', message => {
          message.channel.send({embed:embed});
                         }
                     });
+
+//ban
+
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -316,7 +331,10 @@ client.on('message', message => {
     embed : banembed
   })
 }
-});
+}):
+
+//welcome on dm
+
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`🌹  ولكم نورت السيرفر🌹 
@@ -324,6 +342,9 @@ client.on("guildMemberAdd", member => {
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
 })
+
+//rules
+
 client.on('message', message => {
             if (message.content.startsWith("$rules")) {
      let embed = new Discord.RichEmbed()
@@ -342,6 +363,9 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);//Codes Server
     }
 });
+
+//log
+
 client.on('messageDelete', message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
@@ -938,6 +962,9 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
         logChannel.send(voiceLeave);
     }
 });
+
+//voice kick
+
 client.on("message", message => {
   let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
@@ -963,6 +990,9 @@ client.on("message", message => {
 }
   }
 });
+
+//id
+
 client.on("message", msg => {
   if(msg.content === '$' + "id") {
       const embed = new Discord.RichEmbed();
@@ -979,7 +1009,10 @@ client.on("message", msg => {
           .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true);
       msg.channel.send({embed: embed})
   }
-})
+}) 
+
+//server info
+
 client.on('message', function(msg) {
     const prefix = '$'
     if(msg.content.startsWith (prefix  + 'server')) {
@@ -1017,6 +1050,9 @@ const channel = sWlc[message.guild.id].channel
     message.channel.send(`**${message.guild.name}'s channel has been changed to ${newChannel}**`);
   }
 });
+
+//give role
+
 client.on('message', message => { 
     var prefix = "$";
     if (message.author.boss) return;
@@ -1035,6 +1071,9 @@ client.on('message', message => {
     message.reply('*** Done :white_check_mark:  ***').then(msg => {msg.delete(10000)});
     }
     });
+
+//رابط
+
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
 
@@ -1053,6 +1092,8 @@ message.author.send(`**مدة الرابط : يـوم
 
     }
 });
+
+//help
 
 client.on('message', message => {
      if (message.content === "$help") {
@@ -1075,6 +1116,9 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
+
+//منع النشر 
+
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
                                             if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
@@ -1083,7 +1127,9 @@ client.on('message', message => {
     return message.reply(`** No Invite Links :angry: !**`)
     }
 }
-});
+}):
+
+//voice online
 
 client.on('message',async message => {
   if(message.content.startsWith(prefix + "setvoice")) {
@@ -1207,6 +1253,9 @@ client.on('message', message => {
         }
       }
     });
+
+//unban
+
 client.on('message' , najzx => {
     var prefix = "$";
     let user = najzx.mentions.users.first()|| client.users.get(najzx.content.split(' ')[1])
@@ -1233,6 +1282,8 @@ client.on('message', message => {
   .catch(console.error);
 }
 });
+
+//تقفيل وفتح الشات
 
 client.on('message', message => {
  
