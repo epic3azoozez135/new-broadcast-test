@@ -1058,6 +1058,8 @@ client.on('message', message => {
 .addField('     **$cc **  ' ,' **لصنع رتب الوان** ')
 .addField('     **$DC **  ' ,' **لحذف رتب الألوان** ')
 .addField('     **$ping **  ' ,' **لمعرفة سرعة اتصال البوت** ')
+.addField('     **$hide **  ' ,' **لأخفاء جميع رومات السيرفر** ')
+.addField('     **$show **  ' ,' **لأظهار جميع رومات السيرفر** ')
 
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
@@ -1295,5 +1297,20 @@ client.on('message', msg => {
     msg.channel.send('تم اظهار جميع الرومات')
   }
 }) 
+
+client.on('message', msg => {
+
+    if (msg.content == '$join') {
+        if (msg.member.voiceChannel) {
+
+     if (msg.member.voiceChannel.joinable) {
+         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
+     }
+    }
+}
+})
+client.on('ready', () => {
+    client.channels.get("522455377963646998").join();
+    });
 
 client.login(process.env.BOT_TOKEN);
