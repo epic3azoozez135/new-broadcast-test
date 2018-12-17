@@ -2,8 +2,6 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '$';
 
-
-
 client.on("message", message => {
 
             if (message.content.startsWith(prefix + "obc")) {
@@ -17,9 +15,6 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
-
-
-
 client.on('message', function(message) {
     let messageArray = message.content.split(" ");
     let args = messageArray[1]
@@ -35,9 +30,6 @@ client.on('message', function(message) {
     // message.channel.send(`Now making the colors but if u made it like 1 it will be -1 , Q,E : If u made used the command and u typed in numbers \`${args}\` it will make one so it will be \`${--args}\``)
 }
 });
-
-
-
 client.on("message", message => {
     var prefix = "$"; // غير هنا حط البرفكس
  
@@ -60,8 +52,6 @@ client.on("message", message => {
 
      
 });
-
-
 client.on('message', message =>{
     let args = message.content.split(' ');
     if(args[0] === `${prefix}avatar`){
@@ -83,9 +73,6 @@ client.on('message', message =>{
         }
     };
 });
-
-
-
 client.on('message', message => {
   let command = message.content.split(" ")[0].slice(prefix.length);
   let args = message.content.split(" ").slice(1);
@@ -106,9 +93,6 @@ client.on('message', message => {
     });
   }
 });
-
-
-
   client.on("message", message => {
  if(!message.channel.guild) return;  
   if (message.author.bot) return;
@@ -163,9 +147,6 @@ client.on('message',function(message) {
        });
    } 
 });
-
-
-
 client.on('message', message => {
   if (message.author.omar) return;
   if (!message.content.startsWith(prefix)) return;
@@ -189,9 +170,6 @@ message.guild.member(user).kick();
   })
 }
 });
-
-
-
 client.on('message', message => {
 if(!message.channel.guild) return;
 if(message.content.startsWith(prefix + 'move')) {
@@ -235,15 +213,9 @@ client.on('ready', () => {
     });
   });
 });
-
-
-
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","- EIght , Member"));
     });
-
- // Bot Status
-
 const devs = ["462038057529507841"];
 const adminprefix = ["$"];
 client.on('message', message => {
@@ -293,9 +265,6 @@ client.on('message', message => {
          message.channel.send({embed:embed});
                         }
                     });
-
-
-
 client.on('message', message => {
   if (message.author.x5bz) return;
   if (!message.content.startsWith(prefix)) return;
@@ -332,10 +301,7 @@ client.on('message', message => {
     embed : banembed
   })
 }
-}):
-
-
-
+});
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
   return channel.send(`🌹  ولكم نورت السيرفر🌹 
@@ -343,9 +309,6 @@ client.on("guildMemberAdd", member => {
 انت العضو رقم ${member.guild.memberCount} `) 
 }).catch(console.error)
 })
-
-
-
 client.on('message', message => {
             if (message.content.startsWith("$rules")) {
      let embed = new Discord.RichEmbed()
@@ -364,9 +327,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);//Codes Server
     }
 });
-
-
-
 client.on('messageDelete', message => {
     if(message.author.bot) return;
     if(message.channel.type === 'dm') return;
@@ -963,9 +923,6 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
         logChannel.send(voiceLeave);
     }
 });
-
-
-
 client.on("message", message => {
   let men = message.mentions.users.first();
   if(message.content.startsWith(prefix + "vkick")) {
@@ -991,9 +948,6 @@ client.on("message", message => {
 }
   }
 });
-
-
-
 client.on("message", msg => {
   if(msg.content === '$' + "id") {
       const embed = new Discord.RichEmbed();
@@ -1010,10 +964,7 @@ client.on("message", msg => {
           .addField('📅| تم الانضمام للديسكورد في :', `${msg.createdAt}`,true);
       msg.channel.send({embed: embed})
   }
-}) 
-
-
-
+})
 client.on('message', function(msg) {
     const prefix = '$'
     if(msg.content.startsWith (prefix  + 'server')) {
@@ -1051,9 +1002,6 @@ const channel = sWlc[message.guild.id].channel
     message.channel.send(`**${message.guild.name}'s channel has been changed to ${newChannel}**`);
   }
 });
-
-
-
 client.on('message', message => { 
     var prefix = "$";
     if (message.author.boss) return;
@@ -1072,9 +1020,6 @@ client.on('message', message => {
     message.reply('*** Done :white_check_mark:  ***').then(msg => {msg.delete(10000)});
     }
     });
-
-
-
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
 
@@ -1094,8 +1039,6 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
-
-
 client.on('message', message => {
      if (message.content === "$help") {
      let embed = new Discord.RichEmbed()
@@ -1103,7 +1046,7 @@ client.on('message', message => {
 .addField('     **$clear** ' ,' **مسح الشات** ')
 .addField('     **$obc**  ' ,' **نشر رساله للأعضاء** ')
 .addField('     **$server**  ' ,' **معلومات السرفر** ')
-.addField('     **$id**  ' ,' **معلومات عن حسابك** ')
+.addField('     **$id**  ' ,' **حتى تعرف الاى دى حقك** ')
 .addField('     **$avatar**  ' ,' **لعرض صورة البروفايل خاصتك** ')
 .addField('     **$mute**  ' ,' **لإعطاء شخص ميوت** ')
 .addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
@@ -1117,9 +1060,6 @@ client.on('message', message => {
   message.channel.sendEmbed(embed);
     }
 });
-
-
-
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
                                             if(!message.channel.guild) return message.reply('** advertising me on DM ? 🤔   **');
@@ -1128,9 +1068,7 @@ client.on('message', message => {
     return message.reply(`** No Invite Links :angry: !**`)
     }
 }
-}):
-
-
+});
 
 client.on('message',async message => {
   if(message.content.startsWith(prefix + "setvoice")) {
@@ -1150,7 +1088,7 @@ client.on('message',async message => {
   }
 });
 
-  
+  /// code deafen
   
   
 client.on('message', message => {
@@ -1179,7 +1117,7 @@ client.on('message', message => {
 	
 	
 	
-	
+	///code undeafen
 	
 	
 	client.on('message', async message =>{
@@ -1254,9 +1192,6 @@ client.on('message', message => {
         }
       }
     });
-
-
-
 client.on('message' , najzx => {
     var prefix = "$";
     let user = najzx.mentions.users.first()|| client.users.get(najzx.content.split(' ')[1])
@@ -1283,8 +1218,6 @@ client.on('message', message => {
   .catch(console.error);
 }
 });
-
-
 
 client.on('message', message => {
  
