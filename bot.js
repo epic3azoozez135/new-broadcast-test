@@ -1248,20 +1248,6 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
  
 });
 
-var antispam = require("discord-anti-spam");
-client.on("message", message => {
 
-antispam(bot, {
-  warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned.
-  maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
-  interval: 1000, // Amount of time in ms users can send a maximum of the maxBuffer variable before getting banned.
-  warningMessage: "لو ما وقفت سبام رح تأخذ ميوت", // Warning message send to the user indicating they are going to fast.
-  banMessage: "اخذت ميوت عشانك ما وقفت سبام", // Ban message, always tags the banned user in front of it.
-  maxDuplicatesWarning: 7,// Maximum amount of duplicate messages a user can send in a timespan before getting warned
-  maxDuplicatesBan: 10, // Maximum amount of duplicate messages a user can send in a timespan before getting banned
-  deleteMessagesAfterBanForPastDays: 7 // Delete the spammed messages after banning for the past x days.
-  exemptRoles: ["Admin", "Chat Moderator"] // The names of the roles which should not be spam-filtered
-  exemptUsers: ["user#1234"] // The Discord tags of the users who should not be spam-filtered
-});
  
 client.login(process.env.BOT_TOKEN);
