@@ -1355,7 +1355,7 @@ client.on('guildMemberAdd', member => {
     .addField('•🕣|Time Create » مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
  
                                        
-     .setFooter("LegendGang")
+     .setFooter("Eight Server")
         .setTimestamp()
    
       channel.sendEmbed(embed);
