@@ -1249,6 +1249,8 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
 });
 
 var antispam = require("discord-anti-spam");
+client.on("message", message => {
+
 antispam(bot, {
   warnBuffer: 3, //Maximum amount of messages allowed to send in the interval time before getting warned.
   maxBuffer: 5, // Maximum amount of messages allowed to send in the interval time before getting banned.
