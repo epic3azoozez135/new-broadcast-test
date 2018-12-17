@@ -1247,26 +1247,44 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
  
  
 });
-client.on('guildMemberAdd', member => {
-    let channel = member.guild.channels.find('name', 'eight');
-    let memberavatar = member.user.avatarURL
-      if (!channel) return; 
-    let embed = new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setThumbnail(memberavatar)
-        .addField(':running_shirt_with_sash: | name :  ',`${member}`)
-        .addField(':loudspeaker: | نورت السيرفر ي قلبي' , `Welcome to the server, ${member}`)
-        .addField(':id: | user :', "**[" + `${member.id}` + "]**" )
-                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)
-               
-                  .addField("Name:",`<@` + `${member.id}` + `>`, true)
-                      
-                                     .addField(' الـسيرفر', `${member.guild.name}`,true)
-                                       
-     .setFooter("** Eight Server **")
-        .setTimestamp()
-    
-      channel.sendEmbed(embed);
-    });
+
+client.on('message', function(message) {
+    if(message.content.startsWith(prefix + "report")) {
+        let messageArgs = message.content.split(" ").slice(1).join(" ");
+        let messageReason = message.content.split(" ").slice(2).join(" ");
+        if(!messageReason) return message.reply("**# ضع سبب !**");
+    let mUser = message.mentions.users.first();
+    if(!mUser) return message.channel.send("Couldn't find user.");
+    let Rembed = new Discord.RichEmbed()
+    .setTitle("`New Report!`")
+    .setThumbnail(message.author.avatarURL)
+    .addField("**# - Reported User:**",mUser,true)
+    .addField("**# - Reported User ID:**",mUser.id,true)
+    .addField("**# - Reason:**",messageReason,true)
+    .addField("**# - Channel:**",message.channel,true)
+    .addField("**# - Time:**",message.createdAt,true)
+    .setFooter("لو ان الابلاغ فيه مزح راح يتعرض صاحب الابلاغ لقوبات")
+message.channel.send(Rembed)
+message.channel.send("__هل انت متأكد من ارسال هذا البلاغ؟__").then(msg => {
+    msg.react("?")
+    msg.react("?")
+.then(() => msg.react('?'))
+.then(() =>msg.react('?'))
+let reaction1Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
+let reaction2Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
+
+let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
+let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
+reaction1.on("collect", r => {
+    message.guild.owner.send(Rembed)
+    message.reply("**# - Done!**");
+})
+reaction2.on("collect", r => {
+    message.reply("**# - Canceled!**");
+})
+})
+}
+});
+
 
 client.login(process.env.BOT_TOKEN);
