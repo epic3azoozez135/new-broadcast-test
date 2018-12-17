@@ -1312,5 +1312,13 @@ client.on('message', function(message) {
     }
 });
 
+client.on('guildMemberAdd', member => {
+  
+  const channel = member.guild.channels.find(ch => ch.name === 'eight');
+ 
+  if (!channel) return;
+
+  channel.send(`Welcomme To Eight Server , ${member}`);
+})
 
 client.login(process.env.BOT_TOKEN);
