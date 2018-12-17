@@ -1248,43 +1248,61 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
  
 });
 
-client.on('message', function(message) {
-    if(message.content.startsWith(prefix + "report")) {
-        let messageArgs = message.content.split(" ").slice(1).join(" ");
-        let messageReason = message.content.split(" ").slice(2).join(" ");
-        if(!messageReason) return message.reply("**# ضع سبب !**");
-    let mUser = message.mentions.users.first();
-    if(!mUser) return message.channel.send("Couldn't find user.");
-    let Rembed = new Discord.RichEmbed()
-    .setTitle("`New Report!`")
-    .setThumbnail(message.author.avatarURL)
-    .addField("**# - Reported User:**",mUser,true)
-    .addField("**# - Reported User ID:**",mUser.id,true)
-    .addField("**# - Reason:**",messageReason,true)
-    .addField("**# - Channel:**",message.channel,true)
-    .addField("**# - Time:**",message.createdAt,true)
-    .setFooter("لو ان الابلاغ فيه مزح راح يتعرض صاحب الابلاغ لقوبات")
-message.channel.send(Rembed)
-message.channel.send("__هل انت متأكد من ارسال هذا البلاغ؟__").then(msg => {
-    msg.react("?")
-    msg.react("?")
-.then(() => msg.react(':white_check_mark:'))
-.then(() =>msg.react(':no_entry:'))
-let reaction1Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
-let reaction2Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
-
-let reaction1 = msg.createReactionCollector(reaction1Filter, { time: 12000 });
-let reaction2 = msg.createReactionCollector(reaction2Filter, { time: 12000 });
-reaction1.on("collect", r => {
-    message.guild.owner.send(Rembed)
-    message.reply("**# - Done!**");
-})
-reaction2.on("collect", r => {
-    message.reply("**# - Canceled!**");
-})
-})
+let antibots = JSON.parse(fs.readFileSync('./antibots.json' , 'utf8'));//require antihack.json file
+client.on('message', message => {
+    if(message.content.startsWith(prefix + "ABon")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('ADMINSTRATOR')) return message.channel.send('**Sorry But You Dont Have Permission** `ADMINSTRATOR`' );
+antibots[message.guild.id] = {
+onoff: 'On',
 }
+message.channel.send(`**✅ The AntiBots Is __𝐎𝐍__ !**`)
+          fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
+            if (err) console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            });
+          }
+
+        })
+        //antihack with ON , OFF ! RARE CODE 
+        //LIKE PLUSBOT !
+
+
+client.on('message', message => {
+    if(message.content.startsWith(prefix + "ABoff")) {
+        if(!message.channel.guild) return message.reply('**This Command Only For Servers**');
+        if(!message.member.hasPermission('MANAGE_GUILD')) return message.channel.send('**Sorry But You Dont Have Permission** `MANAGE_GUILD`' );
+antibots[message.guild.id] = {
+onoff: 'Off',
+}
+message.channel.send(`**⛔ The AntiBots Is __𝐎𝐅𝐅__ !**`)
+          fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
+            if (err) console.error(err)
+            .catch(err => {
+              console.error(err);
+          });
+            });
+          }
+
+        })
+
+client.on("guildMemberAdd", member => {
+  if(!antibots[member.guild.id]) antibots[member.guild.id] = {
+onoff: 'Off'
+}
+  if(antibots[member.guild.id].onoff === 'Off') return;
+if(member.user.bot) return member.kick()
+})
+
+fs.writeFile("./antibots.json", JSON.stringify(antibots), (err) => {
+if (err) console.error(err)
+.catch(err => {
+console.error(err);
 });
+
+})
 
 
 client.login(process.env.BOT_TOKEN);
