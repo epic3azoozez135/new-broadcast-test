@@ -1248,6 +1248,26 @@ if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('لي�
  
 });
 
+client.on('message', async message => {
+  if(message.author.bot) return;
+  let prefix = '$';
+
+  let command = message.content.split(" ")[0].slice(prefix.length);
+  let args = message.content.split(" ").slice(1);
+  if(!message.content.toLowerCase().startsWith(prefix)) return;
+
+  if(command == 'DC') {
+    if(!message.member.hasPermission("ADMINISTRATOR")) return message.channel.send(`لاتمتلك الصلاحيات لفعل ذلك! :x:`);
+    message.channel.send("جاري المسح..").then(async m => {
+      await message.guild.roles.forEach(role => {
+        if(/^\d+$/gi.test(role.name)) {
+          role.delete();
+        }
+      });
+      await m.edit(`تم إزالة جميع الالوان.`)
+    });
+  }
+});
 
  
 client.login(process.env.BOT_TOKEN);
