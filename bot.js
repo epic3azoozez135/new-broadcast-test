@@ -1268,8 +1268,8 @@ message.channel.send(Rembed)
 message.channel.send("__هل انت متأكد من ارسال هذا البلاغ؟__").then(msg => {
     msg.react("?")
     msg.react("?")
-.then(() => msg.react('?'))
-.then(() =>msg.react('?'))
+.then(() => msg.react(':white_check_mark:'))
+.then(() =>msg.react(':no_entry:'))
 let reaction1Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
 let reaction2Filter = (reaction, user) => reaction.emoji.name === '?' && user.id === message.author.id;
 
