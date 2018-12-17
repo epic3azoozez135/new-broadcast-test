@@ -1055,6 +1055,9 @@ client.on('message', message => {
 .addField('     **$bans **  ' ,' **لمعرفة كم شخص مبند في السيرفر** ')
 .addField('     **$mc **  ' ,' **لتقفيل الروم** ')
 .addField('     **$umc **  ' ,' **لفتح الروم** ')
+.addField('     **$cc **  ' ,' **لصنع رتب الوات** ')
+.addField('     **$DC **  ' ,' **لحذف رتب الألوان** ')
+.addField('     **$ping **  ' ,' **لمعرفة سرعة اتصال البوت** ')
 
 .setColor('RANDOM')
   message.channel.sendEmbed(embed);
