@@ -1098,11 +1098,11 @@ message.author.send(`**مدة الرابط : يـوم
 client.on('message', message => {
      if (message.content === "$help") {
      let embed = new Discord.RichEmbed()
-.setThumbnail(message.author.avatarURL)
+
 .addField('     **$clear** ' ,' **مسح الشات** ')
 .addField('     **$obc**  ' ,' **نشر رساله للأعضاء** ')
 .addField('     **$server**  ' ,' **معلومات السرفر** ')
-.addField('     **$id**  ' ,' **حتى تعرف الاى دى حقك** ')
+.addField('     **$id**  ' ,' **معلومات عن حسابك** ')
 .addField('     **$avatar**  ' ,' **لعرض صورة البروفايل خاصتك** ')
 .addField('     **$mute**  ' ,' **لإعطاء شخص ميوت** ')
 .addField('     **$unmute**  ' ,' **لفك من شخص ميوت** ')
