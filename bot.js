@@ -2,6 +2,8 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '$';
 
+//Brodcast
+
 client.on("message", message => {
 
             if (message.content.startsWith(prefix + "obc")) {
@@ -15,6 +17,9 @@ client.on("message", message => {
  message.delete(); 
 };     
 });
+
+//colors make
+
 client.on('message', function(message) {
     let messageArray = message.content.split(" ");
     let args = messageArray[1]
@@ -30,6 +35,8 @@ client.on('message', function(message) {
     // message.channel.send(`Now making the colors but if u made it like 1 it will be -1 , Q,E : If u made used the command and u typed in numbers \`${args}\` it will make one so it will be \`${--args}\``)
 }
 });
+//clear chat
+
 client.on("message", message => {
     var prefix = "$"; // غير هنا حط البرفكس
  
@@ -52,6 +59,8 @@ client.on("message", message => {
 
      
 });
+//avatar
+
 client.on('message', message =>{
     let args = message.content.split(' ');
     if(args[0] === `${prefix}avatar`){
@@ -73,6 +82,9 @@ client.on('message', message =>{
         }
     };
 });
+
+//suggest الأقتراحات
+
 client.on('message', message => {
   let command = message.content.split(" ")[0].slice(prefix.length);
   let args = message.content.split(" ").slice(1);
@@ -93,6 +105,9 @@ client.on('message', message => {
     });
   }
 });
+
+//unmute
+
   client.on("message", message => {
  if(!message.channel.guild) return;  
   if (message.author.bot) return;
