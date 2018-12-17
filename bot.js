@@ -1099,7 +1099,7 @@ message.author.send(`**مدة الرابط : يـوم
 client.on('message', message => {
      if (message.content === "$help") {
      let embed = new Discord.RichEmbed()
-
+.setThumbnail(message.author.avatarURL)
 .addField('     **$clear** ' ,' **مسح الشات** ')
 .addField('     **$obc**  ' ,' **نشر رساله للأعضاء** ')
 .addField('     **$server**  ' ,' **معلومات السرفر** ')
