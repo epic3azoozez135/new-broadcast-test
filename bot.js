@@ -1326,7 +1326,7 @@ client.on("message", message => {
               
           if(!message.channel.guild) return;
    if(message.author.bot) return;
-      if(message.content === prefix + "avatar server"){ 
+      if(message.content === prefix + "Aserver"){ 
           const embed = new Discord.RichEmbed()
   
       .setTitle(`This is  ** ${message.guild.name} **  Photo !`)
