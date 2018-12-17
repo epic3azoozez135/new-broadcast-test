@@ -1340,5 +1340,25 @@ client.on("message", message => {
       }
   });
   
+client.on('guildMemberAdd', member => {
+    let channel = member.guild.channels.find('name', 'eight');
+    let memberavatar = member.user.avatarURL
+      if (!channel) return;
+    let embed = new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setThumbnail(memberavatar)
+        .addField('•🔰|Name» الإسم',`${member}`)
+        .addField('•🌹|Welcome » نورت السيرفر' , `Welcome to the server, ${member}`)
+        .addField('•🆔| User » اي دي العضو', "**[" + `${member.id}` + "]**" )
+                .addField('➡| انت العضو رقم',`${member.guild.memberCount}`)                     
+                                     .addField('•🔮|Server Name » اسم السيرفر', `${member.guild.name}`,true)
+    .addField('•🕣|Time Create » مدة انشاء حسابك', member.user.createdAt.toLocaleString(), true)
+ 
+                                       
+     .setFooter("LegendGang")
+        .setTimestamp()
+   
+      channel.sendEmbed(embed);
+    });
 
 client.login(process.env.BOT_TOKEN);
