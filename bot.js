@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const prefix = '$';
 
-//Brodcast
+// Brodcast
 
 client.on("message", message => {
 
@@ -18,7 +18,7 @@ client.on("message", message => {
 };     
 });
 
-//colors make
+// Make Colors
 
 client.on('message', function(message) {
     let messageArray = message.content.split(" ");
@@ -35,7 +35,8 @@ client.on('message', function(message) {
     // message.channel.send(`Now making the colors but if u made it like 1 it will be -1 , Q,E : If u made used the command and u typed in numbers \`${args}\` it will make one so it will be \`${--args}\``)
 }
 });
-//clear chat
+
+// Clear Chat
 
 client.on("message", message => {
     var prefix = "$"; // غير هنا حط البرفكس
@@ -59,7 +60,7 @@ client.on("message", message => {
 
      
 });
-//avatar
+// Avatar
 
 client.on('message', message =>{
     let args = message.content.split(' ');
@@ -83,7 +84,7 @@ client.on('message', message =>{
     };
 });
 
-//suggest الأقتراحات
+// Suggest
 
 client.on('message', message => {
   let command = message.content.split(" ")[0].slice(prefix.length);
@@ -106,7 +107,7 @@ client.on('message', message => {
   }
 });
 
-//unmute
+// Unmute
 
   client.on("message", message => {
  if(!message.channel.guild) return;  
@@ -135,7 +136,7 @@ client.on('message', message => {
  
 });
 
-//mute
+// Mute
 client.on('message',function(message) {
  if(!message.channel.guild) return;    let messageArray = message.content.split(' ');
     let muteRole =  message.guild.roles.find('name', 'Muted');
@@ -163,7 +164,7 @@ client.on('message',function(message) {
    } 
 });
 
-//kick
+// Kick
 
 client.on('message', message => {
   if (message.author.omar) return;
@@ -189,7 +190,7 @@ message.guild.member(user).kick();
 }
 });
 
-//move
+// Move
 
 client.on('message', message => {
 if(!message.channel.guild) return;
@@ -235,13 +236,13 @@ client.on('ready', () => {
   });
 });
 
-//autorole
+// Auto Role
 
 client.on('guildMemberAdd', member=> {
     member.addRole(member.guild.roles.find("name","- EIght , Member"));
     });
 
-//حالات البوت
+ // Bot Status
 
 const devs = ["462038057529507841"];
 const adminprefix = ["$"];
@@ -293,7 +294,7 @@ client.on('message', message => {
                         }
                     });
 
-//ban
+// Ban
 
 client.on('message', message => {
   if (message.author.x5bz) return;
@@ -333,7 +334,7 @@ client.on('message', message => {
 }
 }):
 
-//welcome on dm
+// Welcome Dm
 
 client.on("guildMemberAdd", member => {
   member.createDM().then(function (channel) {
@@ -343,7 +344,7 @@ client.on("guildMemberAdd", member => {
 }).catch(console.error)
 })
 
-//rules
+// Rules
 
 client.on('message', message => {
             if (message.content.startsWith("$rules")) {
@@ -364,7 +365,7 @@ client.on('message', message => {
     }
 });
 
-//log
+// Logs
 
 client.on('messageDelete', message => {
     if(message.author.bot) return;
@@ -963,7 +964,7 @@ client.on('voiceStateUpdate', (voiceOld, voiceNew) => {
     }
 });
 
-//voice kick
+// Voice Kick
 
 client.on("message", message => {
   let men = message.mentions.users.first();
@@ -991,7 +992,7 @@ client.on("message", message => {
   }
 });
 
-//id
+// ID
 
 client.on("message", msg => {
   if(msg.content === '$' + "id") {
@@ -1011,7 +1012,7 @@ client.on("message", msg => {
   }
 }) 
 
-//server info
+// Server Info
 
 client.on('message', function(msg) {
     const prefix = '$'
@@ -1051,7 +1052,7 @@ const channel = sWlc[message.guild.id].channel
   }
 });
 
-//give role
+// Give Role
 
 client.on('message', message => { 
     var prefix = "$";
@@ -1072,7 +1073,7 @@ client.on('message', message => {
     }
     });
 
-//رابط
+// Link
 
 client.on('message', message => {
     if (message.content.startsWith("رابط")) {
@@ -1093,7 +1094,7 @@ message.author.send(`**مدة الرابط : يـوم
     }
 });
 
-//help
+// Help
 
 client.on('message', message => {
      if (message.content === "$help") {
@@ -1117,7 +1118,7 @@ client.on('message', message => {
     }
 });
 
-//منع النشر 
+// Anitinvites
 
 client.on('message', message => {
     if(message.content.includes('discord.gg')){
@@ -1129,7 +1130,7 @@ client.on('message', message => {
 }
 }):
 
-//voice online
+// Voice Onlins
 
 client.on('message',async message => {
   if(message.content.startsWith(prefix + "setvoice")) {
@@ -1254,7 +1255,7 @@ client.on('message', message => {
       }
     });
 
-//unban
+// Unban
 
 client.on('message' , najzx => {
     var prefix = "$";
@@ -1283,7 +1284,7 @@ client.on('message', message => {
 }
 });
 
-//تقفيل وفتح الشات
+// Open Close Chat
 
 client.on('message', message => {
  
