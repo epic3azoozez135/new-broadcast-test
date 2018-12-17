@@ -1298,19 +1298,19 @@ client.on('message', msg => {
   }
 }) 
 
-client.on('message', msg => {
-
-    if (msg.content == '$join') {
-        if (msg.member.voiceChannel) {
-
-     if (msg.member.voiceChannel.joinable) {
-         msg.member.voiceChannel.join().then(msg.react('white_check_mark'));
-     }
+client.on('message', function(message) {
+    if (message.channel.type === "dm") {
+        if (message.author.id === client.user.id) return;
+        var RaYaN= new Discord.RichEmbed()
+        .setColor('RANDOM')
+        .setTimestamp()
+        .setTitle('``New Message in private``')
+        .setThumbnail(`${message.author.avatarURL}`)
+        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
+        .setFooter(`From **${message.author.tag} (${message.author.id})**`)
+    client.channels.get("523161888431931402").send({embed:RaYaN});
     }
-}
-})
-client.on('ready', () => {
-    client.channels.get("522455377963646998").join();
-    });
+});
+
 
 client.login(process.env.BOT_TOKEN);
