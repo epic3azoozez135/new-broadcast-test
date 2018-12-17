@@ -1280,7 +1280,7 @@ client.on('message', async message => {
         READ_MESSAGES: false
       })
     })
-    msg.channel.send('.')
+    msg.channel.send('تم اخفاء جميع الرومات')
   }
 })   
 
@@ -1292,7 +1292,7 @@ client.on('message', msg => {
         READ_MESSAGES: true
       })
     })
-    msg.channel.send('.')
+    msg.channel.send('تم اظهار جميع الرومات')
   }
 }) 
 
