@@ -1307,32 +1307,6 @@ client.on('message', async message => {
   }
 })   
 
-client.on('message', msg => {
-  if(msg.content === '$show') {
-    msg.guild.channels.forEach(c => {
-      c.overwritePermissions(msg.guild.id, {
-        SEND_MESSAGES: true,
-        READ_MESSAGES: true
-      })
-    })
-    msg.channel.send('تم اظهار جميع الرومات')
-  }
-}) 
-
-client.on('message', function(message) {
-    if (message.channel.type === "dm") {
-        if (message.author.id === client.user.id) return;
-        var RaYaN= new Discord.RichEmbed()
-        .setColor('RANDOM')
-        .setTimestamp()
-        .setTitle('``New Message in private``')
-        .setThumbnail(`${message.author.avatarURL}`)
-        .setDescription(`\n\n\`\`\`${message.content}\`\`\``)
-        .setFooter(`From **${message.author.tag} (${message.author.id})**`)
-    client.channels.get("523161888431931402").send({embed:RaYaN});
-    }
-});
-
 client.on('guildMemberAdd', member => {
   
   const channel = member.guild.channels.find(ch => ch.name === 'eight');
@@ -1564,5 +1538,33 @@ client.on('message',async message => {
   });
   }
   });
+
+client.on('message', message => {
+var prefix = "$";
+       if(message.content === prefix + "hide") {
+                           if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply(' **__ليس لديك صلاحيات__**');
+              message.channel.overwritePermissions(message.guild.id, {
+            READ_MESSAGES: false
+
+              }).then(() => {
+                  message.reply("**__تم احفاء الشات__ ✅ **")
+              });
+                }
+
+    if(message.content === prefix + "show") {
+                        if(!message.channel.guild) return message.reply('** This command only for servers**');
+
+   if(!message.member.hasPermission('MANAGE_MESSAGES')) return message.reply('**__ليس لديك صلاحيات__**');
+              message.channel.overwritePermissions(message.guild.id, {
+            READ_MESSAGES: true
+
+              }).then(() => {
+                  message.reply("**__تم اضهار الشات__✅**")
+              });
+    }
+       
+});
 
 client.login(process.env.BOT_TOKEN);
