@@ -1453,7 +1453,7 @@ const welcome = JSON.parse(fs.readFileSync('./welcomer.json' , 'utf8'));
  
 client.on('message', message => {
            if (!message.channel.guild) return;
-            const fs = require('fs')
+
     let room = message.content.split(" ").slice(1);
     let findroom = message.guild.channels.find('name', `${room}`)
     if(message.content.startsWith(prefix + "setWelcomer")) {
