@@ -1295,18 +1295,7 @@ client.on('message', async message => {
   }
 });
 
-   client.on('message', msg => {
-  if(msg.content === '$hide') {
-    msg.guild.channels.forEach(c => {
-      c.overwritePermissions(msg.guild.id, {
-        SEND_MESSAGES: false,
-        READ_MESSAGES: false
-      })
-    })
-    msg.channel.send('تم اخفاء جميع الرومات')
-  }
-})   
-
+   
 client.on('guildMemberAdd', member => {
   
   const channel = member.guild.channels.find(ch => ch.name === 'eight');
